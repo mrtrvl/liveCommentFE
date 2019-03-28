@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -8,6 +11,28 @@ import { ModeratorComponent } from './moderator/moderator.component';
 import { SendmessageComponent } from './sendmessage/sendmessage.component';
 
 import { MessagesService } from './services/messages.service';
+import { GeneralService } from './services/general.service';
+
+import {
+  MatButtonModule,
+  MatTableModule,
+  MatFormFieldModule,
+  MatCardModule,
+} from '@angular/material';
+
+const modules = [
+  MatButtonModule,
+  MatTableModule,
+  MatFormFieldModule,
+  MatCardModule
+];
+@NgModule({
+  imports: [...modules],
+  exports: [...modules],
+  declarations: [],
+})
+
+export class CustomMaterialModule { }
 
 const appRoutes: Routes = [
   { path: 'moderator', component: ModeratorComponent },
@@ -23,6 +48,11 @@ const appRoutes: Routes = [
     SendmessageComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    CustomMaterialModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,
@@ -31,6 +61,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     MessagesService,
+    GeneralService,
   ],
   bootstrap: [AppComponent]
 })

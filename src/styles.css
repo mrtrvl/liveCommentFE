@@ -1,1 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.active {
+  background-color: #5C6BC0;
+}
+
+table {
+  width: 100%;
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+.mat-row:nth-child(even){
+  background-color:#F8BBD0;
+}
+
+.mat-row:nth-child(odd){
+  background-color:#9FA8DA;
+}
+
+.mat-header-cell {
+  background-color: #5C6BC0;
+  color: white;
+}
+
+.mat-card {
+  background-color: #C5CAE9;
+}
+
+.mat-paginator {
+  width: 100%;
+  background-color: #5C6BC0;
+  color: white;
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+.mat-paginator-page-size
+.mat-select-trigger
+.mat-select-value {
+  color: white;
+}
+
+.center {
+  margin-left:auto; 
+  margin-right:auto;
+}
+.search-box {
+  width: 400px;
+}
+
+.mat-checkbox {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mat-sort-header-arrow {
+  color: white;
+}
+
+.personImage {
+  height: 150px;
+}
+
+.live-header-image {
+  background-size: cover;
+}
+
+.Error {
+  background: #F8BBD0;
+}
+
+.Event {
+  background: #F2FDE4;
+}
+
+.live-view-detail {
+  margin-bottom: 5px;
+}
+
+.person-form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}

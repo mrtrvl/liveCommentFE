@@ -6,5 +6,6 @@ export interface Message {
 }
 
 export interface Messages {
-  messages: Message [];
+  success: Boolean;
+  message: Message [];
 }
