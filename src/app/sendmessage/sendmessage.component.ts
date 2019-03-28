@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Message } from '../interfaces/message.interface';
+import { MessagesService } from '../services/messages.service';
 
 @Component({
   selector: 'app-sendmessage',
@@ -6,10 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sendmessage.component.css']
 })
 export class SendmessageComponent implements OnInit {
+  message: Message;
 
-  constructor() { }
+  messageForm = new FormGroup({
+    sender: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required]),
+  });
+  constructor(
+    private messagesService: MessagesService,
+  ) { }
 
   ngOnInit() {
   }
 
+  sendMessage () {
+    if (this.messageForm.valid) {
+      this.messagesService.sendMessage(this.messageForm.value)
+        .subscribe(data => {
+          console.log(data);
+          this.messageForm.reset();
+        });
+    }
+  }
 }

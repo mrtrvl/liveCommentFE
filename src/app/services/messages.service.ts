@@ -27,4 +27,9 @@ export class MessagesService {
     const url = `${BASE_URL}approve/${id}/`;
     return this.http.get(url);
   }
+
+  sendMessage = (message: any) => {
+    const url = `${BASE_URL}message/`;
+    return this.http.post(url, message);
+  }
 }

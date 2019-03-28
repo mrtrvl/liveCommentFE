@@ -18,13 +18,15 @@ import {
   MatTableModule,
   MatFormFieldModule,
   MatCardModule,
+  MatInputModule,
 } from '@angular/material';
 
 const modules = [
   MatButtonModule,
   MatTableModule,
   MatFormFieldModule,
-  MatCardModule
+  MatCardModule,
+  MatInputModule,
 ];
 @NgModule({
   imports: [...modules],

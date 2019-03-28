@@ -1,3 +1,16 @@
-<p>
-  sendmessage works!
-</p>
+    <mat-card>
+      <mat-card-title>Saada sõnum</mat-card-title>
+
+      <mat-card-subtitle>Tärniga (*) tähistatud väljad on kohustuslikud</mat-card-subtitle>
+      <div [formGroup]="messageForm">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Saatja" formControlName="sender" required>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <input matInput type="text" placeholder="Sõnum" formControlName="message" required>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" [disabled]="messageForm.invalid" (click)="sendMessage()">Saada sõnum</button>
+    </mat-card>
+  
