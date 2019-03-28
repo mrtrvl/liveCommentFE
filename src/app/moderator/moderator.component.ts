@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material';
 export class ModeratorComponent implements OnInit {
   messages: Messages;
   dataSource: MatTableDataSource<Message>;
-  displayedColumns: string[] = ['sender', 'message'];
+  displayedColumns: string[] = ['sender', 'message', 'approve'];
 
   constructor(
     private messageService: MessagesService,
@@ -31,10 +31,11 @@ export class ModeratorComponent implements OnInit {
       });
   }
 
-  approve = (id: String) => {
+  approveMessage = (id: String) => {
     this.messageService.approveMessage(id)
       .subscribe(data => {
         console.log(data);
+        this.getAllMessages();
       });
   }
 }

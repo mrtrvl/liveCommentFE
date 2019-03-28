@@ -1,5 +1,19 @@
-<div *ngIf="messages">
-  <ul>
-    <li *ngFor="let message of messages.message">{{ message.message }} {{ message.sender }}</li>
-  </ul>
-</div>
+<mat-card *ngIf="messages">
+    <mat-card-content>
+      <mat-card-title>
+        Sõnumid
+      </mat-card-title>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="message">
+            <th mat-header-cell *matHeaderCellDef> Sõnum </th>
+            <td mat-cell *matCellDef="let message"> {{ message.message }} </td>
+        </ng-container>
+        <ng-container matColumnDef="sender">
+            <th mat-header-cell *matHeaderCellDef> Saatja </th>
+            <td mat-cell *matCellDef="let message"> {{ message.sender }} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>

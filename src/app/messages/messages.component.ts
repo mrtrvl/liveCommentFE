@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Messages, Message } from '../interfaces/message.interface';
 import { MessagesService } from '../services/messages.service';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-messages',
@@ -9,6 +10,8 @@ import { MessagesService } from '../services/messages.service';
 })
 export class MessagesComponent implements OnInit {
   messages: Messages;
+  dataSource: MatTableDataSource<Message>;
+  displayedColumns: string[] = ['sender', 'message'];
 
   constructor(
     private messageService: MessagesService,
@@ -22,7 +25,7 @@ export class MessagesComponent implements OnInit {
     this.messageService.getModeratedMessages()
       .subscribe(data => {
         this.messages = data;
-        console.log(this.messages);
+        this.dataSource = new MatTableDataSource(this.messages.message);
       });
   }
 }
