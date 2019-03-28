@@ -13,7 +13,7 @@ import { GeneralService } from '../services/general.service';
 export class ModeratorComponent implements OnInit, OnDestroy {
   messages: Messages;
   dataSource: MatTableDataSource<Message>;
-  displayedColumns: string[] = ['sender', 'message', 'approve'];
+  displayedColumns: string[] = ['sender', 'message', 'approve', 'delete'];
   source: any;
 
   constructor(
@@ -36,9 +36,6 @@ export class ModeratorComponent implements OnInit, OnDestroy {
     this.source.addEventListener('received', message => {
       this.getAllMessages();
     });
-    this.source.onmessage = e => {
-      console.log(e);
-    };
   }
 
 
@@ -46,16 +43,21 @@ export class ModeratorComponent implements OnInit, OnDestroy {
     this.messageService.getNonModeratedMessages()
       .subscribe(data => {
         this.messages = data;
-        console.log(this.messages.message);
         this.dataSource = new MatTableDataSource(this.messages.message);
-        console.log(this.dataSource);
       });
   }
 
   approveMessage = (id: String) => {
     this.messageService.approveMessage(id)
       .subscribe(data => {
-        console.log(data);
+        this.generalService.showFlashMessage(data);
+        this.getAllMessages();
+      });
+  }
+
+  deleteMessage = (id: String) => {
+    this.messageService.deleteMessage(id)
+      .subscribe(data => {
         this.generalService.showFlashMessage(data);
         this.getAllMessages();
       });

@@ -3,6 +3,7 @@ export interface Message {
   message: String;
   sender: String;
   approved: Boolean;
+  timestamp: Date;
 }
 
 export interface Messages {

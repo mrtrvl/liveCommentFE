@@ -28,7 +28,6 @@ export class SendmessageComponent implements OnInit {
     if (this.messageForm.valid) {
       this.messagesService.sendMessage(this.messageForm.value)
         .subscribe(data => {
-          console.log(data);
           this.generalService.showFlashMessage(data);
           this.messageForm.reset();
         });

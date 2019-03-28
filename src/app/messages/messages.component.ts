@@ -34,9 +34,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.source.addEventListener('approved', message => {
       this.getAllMessages();
     });
-    this.source.onmessage = e => {
-      console.log(e);
-    };
   }
 
   getAllMessages = () => {

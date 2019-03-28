@@ -32,4 +32,9 @@ export class MessagesService {
     const url = `${BASE_URL}message/`;
     return this.http.post(url, message);
   }
+
+  deleteMessage = (id: String) => {
+    const url = `${BASE_URL}delete/${id}/`;
+    return this.http.get(url);
+  }
 }
