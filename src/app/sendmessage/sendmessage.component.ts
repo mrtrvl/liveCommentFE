@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Message } from '../interfaces/message.interface';
 import { MessagesService } from '../services/messages.service';
+import { GeneralService } from '../services/general.service';
 
 @Component({
   selector: 'app-sendmessage',
@@ -17,6 +18,7 @@ export class SendmessageComponent implements OnInit {
   });
   constructor(
     private messagesService: MessagesService,
+    private generalService: GeneralService,
   ) { }
 
   ngOnInit() {
@@ -27,6 +29,7 @@ export class SendmessageComponent implements OnInit {
       this.messagesService.sendMessage(this.messageForm.value)
         .subscribe(data => {
           console.log(data);
+          this.generalService.showFlashMessage(data);
           this.messageForm.reset();
         });
     }

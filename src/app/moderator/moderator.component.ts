@@ -3,6 +3,7 @@ import { Messages, Message } from '../interfaces/message.interface';
 import { MessagesService } from '../services/messages.service';
 import { MatTableDataSource } from '@angular/material';
 import { BASE_URL } from '../services/constants';
+import { GeneralService } from '../services/general.service';
 
 @Component({
   selector: 'app-moderator',
@@ -17,6 +18,7 @@ export class ModeratorComponent implements OnInit, OnDestroy {
 
   constructor(
     private messageService: MessagesService,
+    private generalService: GeneralService,
   ) {
     this.connect();
   }
@@ -54,6 +56,7 @@ export class ModeratorComponent implements OnInit, OnDestroy {
     this.messageService.approveMessage(id)
       .subscribe(data => {
         console.log(data);
+        this.generalService.showFlashMessage(data);
         this.getAllMessages();
       });
   }
