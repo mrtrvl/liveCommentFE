@@ -2,7 +2,14 @@
 <mat-toolbar color="primary">
     <mat-card-title class="center">{{ title }}</mat-card-title>
 </mat-toolbar>
-
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/" routerLinkActive="active">Saada sõnum</a>
+    <a mat-button routerLink="/messages" routerLinkActive="active">Sõnumid</a>
+    <a mat-button routerLink="/moderator" routerLinkActive="active">Moderaator</a>
+  </mat-toolbar-row>
+</mat-toolbar>
 <ng-flash-message></ng-flash-message>
 <router-outlet></router-outlet>
 
